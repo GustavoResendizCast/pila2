@@ -16,11 +16,13 @@ debug(`👻Ruta de app ${__dirname}`);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// Se establecen los middlwares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// Crea un server de archivos estaticos
+app.use(express.static(path.join(__dirname,' ..', 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
