@@ -7,6 +7,6 @@ router.get('/', function(req, res, next) {
 });
 //GET//USER//author
 router.get('/author', function(req, res, next) {
-  res.render('author',{author:"Alejandro Carreon Herrera"});
+  res.render('author',{author:"Gustavo Francisco Resendiz Castillo"});
 });
 module.exports = router;
