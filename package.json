@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./server/bin/www",
-    "dev":"DEBUG=pila2:server node --watch ./server/bin/www"
+    "dev": "DEBUG=pila2:server babel-watch ./server/bin/www",
+    "buil"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,5 +14,13 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.22.15",
+    "@babel/preset-env": "^7.22.15",
+    "babel-watch": "^7.8.1",
+    "core-js": "^3.32.2"
   }
 }
