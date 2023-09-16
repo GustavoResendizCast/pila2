@@ -14,7 +14,32 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     // 2.2 Nombre del archivo de salida
     filename: "bundle.js",
-    // 2.3 Ruta base de archivos estaticos
-    publicPath: "/"
+     // Agregando un modulo a webpack
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    'modules': false,
+                    'useBuiltIns': 'usage',
+                    'targets': '> 0.25%, not dead',
+                    'corejs': 3
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
   }
 }
