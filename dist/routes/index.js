@@ -6,7 +6,8 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
-    title: 'ITGAM'
+    title: 'ITGAM',
+    author: "Resendiz Gustavo"
   });
 });
 module.exports = router;

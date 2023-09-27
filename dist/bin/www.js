@@ -6,7 +6,7 @@
 "use strict";
 
 var app = require('../app');
-var debug = require('debug')('pila2:server');
+var debug = require('debug')('dwpc2:server');
 var http = require('http');
 
 /**
@@ -79,5 +79,5 @@ function onError(error) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('🦖Listening on ' + bind);
+  debug('📣 Escuchando Puerto 3000 ' + bind);
 }
