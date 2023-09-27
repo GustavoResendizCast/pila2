@@ -33,16 +33,9 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/express-generator:2": {}
 	},
-	"portsAttributes": {
-		"3000": {
-			"label": "app",
-			"onAutoForward": "notify"
-		}
-	}
-
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [3000, 27017],
+	"forwardPorts": [3000, 27017]
 	
 
 	// Use 'postCreateCommand' to run commands after the container is created.
