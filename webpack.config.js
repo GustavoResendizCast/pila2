@@ -1,5 +1,7 @@
 // Importar el modulo Path
 const path = require('path');
+// Importing Extract Plugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // Exportamos un Configuration Options Object
 module.exports = {
@@ -14,7 +16,8 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     // 2.2 Nombre del archivo de salida
     filename: "bundle.js",
-     // Agregando un modulo a webpack
+  },
+  // Agregando un modulo a webpack
   module: {
     rules: [
       {
@@ -38,8 +41,16 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
-  }
-  }
+  },
+  // Sección de Plugins
+  plugins: [new MiniCssExtractPlugin({
+    // Archivo css de salida
+    filename: 'styles/app.css'
+  })]
 }
