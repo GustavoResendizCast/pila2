@@ -1,12 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
   res.send('respond with a resource');
 });
-//GET//USER//author
-router.get('/author', function(req, res, next) {
-  res.render('author',{author:"Gustavo Resendiz"});
+// GET//USER//author
+router.get('/author', (_, res) => {
+  res.render('author', { author: 'Gustavo Resendiz' });
 });
 module.exports = router;
