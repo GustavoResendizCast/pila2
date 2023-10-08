@@ -4,15 +4,11 @@
  * Module dependencies.
  */
 
-import Debug from 'debug';
 import http from 'http';
 import app from '../app';
 
-/**
- * Get port from environment and store in Express.
- */
-
-const debug = Debug('dwpcii:server');
+// Importing winston logger
+import log from '../config/winston';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -54,11 +50,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(`${bind} requires elevated privileges`);
+      log.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(`${bind} is already in use`);
+      log.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -78,7 +74,7 @@ const server = http.createServer(app); // (req, res)=>{...}
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
-  debug(`📢 Listening on ${bind}`);
+  log.info(`📢 Listening on ${bind}`);
 }
 
 /**

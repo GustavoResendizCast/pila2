@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/bin/www",
-    "dev": "NODE_ENV=development DEBUG=dwpcii:server babel-watch ./server/bin/www",
-    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
-    "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
-    "cleans": "rm -rf ./dist",
-    "cleanc": "rm -f ./public/bundle.js ./public/styles/app.css",
     "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
-    "build": "npm run b:c && npm run b:s"
+    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
+    "build": "npm run b:c && npm run b:s",
+    "clean:logs" : "rm -rf ./server/logs/*.log",
+    "cleanc": "rm -f ./public/bundle.js ./public/styles/app.css",
+    "cleans": "rm -rf ./dist",
+    "dev": "NODE_ENV=development DEBUG=dwpcii:server babel-watch ./server/bin/www",
+    "devc": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
+    "start": "node ./dist/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
