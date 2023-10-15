@@ -1,4 +1,3 @@
-// Función que agrega rutas
 import createError from 'http-errors';
 // Impornting winston logger
 import log from './config/winston';
