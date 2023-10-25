@@ -1,17 +1,17 @@
 <!-- Dropdow para menu "Projectos" -->
-<ul id='dropdownMenu' class='dropdown-content'>
+<ul id="dropdownMenu" class="dropdown-content">
   <li>
-    <a href='/project'>
-      <i class='large material-icons' style='margin: 2px;'>
+    <a href="/projects">
+      <i class="large material-icons" style="margin: 2px;">
         list
       </i>
       Listar Proyectos
     </a>
   </li>
-  <li class='divider'></li>
+  <li class="divider"></li>
   <li>
-    <a href='/project/add'>
-      <i class='large material-icons' style='margin: 2px;'>
+    <a href="/projects/add">
+      <i class="large material-icons" style="margin: 2px;">
         add_box
       </i>
       Crear Proyecto
@@ -20,27 +20,27 @@
 </ul>
 
 <!-- Dropdow para menu "Usuarios" -->
-<ul id='user-dropdown-menu' class='dropdown-content'>
+<ul id="user-dropdown-menu" class="dropdown-content">
   <li>
-    <a href='/user/login'>
-      <i class='large material-icons' style='margin: 2px;'>
+    <a href="/user/login">
+      <i class="large material-icons" style="margin: 2px;">
         login
       </i>
       Ingresar
     </a>
   </li>
-  <li class='divider'></li>
-  <li>
-    <a href='/user/register'>
-      <i class='large material-icons' style='margin: 2px;'>
+  <li class="divider"></li>
+    <li>
+    <a href="/user/register">
+      <i class="large material-icons" style="margin: 2px;">
         person_add
       </i>
       Registrarse
     </a>
   </li>
   <li>
-    <a href='/user/logout'>
-      <i class='large material-icons' style='margin: 2px;'>
+    <a href="/user/logout">
+      <i class="large material-icons" style="margin: 2px;">
         logout
       </i>
       Cerrar sesion
@@ -48,28 +48,26 @@
   </li>
 </ul>
 
-<nav class='teal darken-1'>
-  <div class='container'>
-    <div class='nav-wrapper'>
-      <!-- Barra de navegación completa -->
-      <a href='/' class='brand-logo'>
-        <div id='brand-logo-img'>
-          <img src='/public/images/ProjNotes.jpeg' width='50px' alt='logo' />
-          Projnotes
-        </div>
+<!-- Inicia marcado de barra de navegación -->
+<nav class="teal darken-4">
+  <div class="container">
+    <div class="nav-wrapper">
+      <!-- Visulización de navegación en pantalla completa -->
+      <a href="/" class="brand-logo">
+        📒 ProjNotes
       </a>
-      <ul id='nav' class='right hide-on-med-and-down'>
+      <ul id="nav" class="right hide-on-med-and-down">
         <li>
-          <a href='/'>
-            <i class='large material-icons right'>
+          <a href="/">
+            <i class="large material-icons right">
               home
             </i>
             Inicio
           </a>
         </li>
         <li>
-          <a href='/about'>
-            <i class='material-icons right'>
+          <a href="/about">
+            <i class="material-icons right">
               business
             </i>
             Acerca De.
@@ -77,28 +75,24 @@
         </li>
         <!-- Dropdown Trigger -->
         <li>
-          <a class='dropdown-trigger' href='#!' data-target='dropdownMenu'>
+          <a class="dropdown-trigger" href="#!" data-target="dropdownMenu">
             Acciones
-            <i class='material-icons right'>
+            <i class="material-icons right">
               arrow_drop_down
             </i>
           </a>
         </li>
         <!-- User Dropdown -->
         <li>
-          <a
-            class='dropdown-trigger'
-            href='#!'
-            data-target='user-dropdown-menu'
-          >
+          <a class="dropdown-trigger" href="#!" data-target="user-dropdown-menu">
             Usuario
-            <i class='material-icons right'>
+            <i class="material-icons right">
               people
             </i>
           </a>
         </li>
       </ul>
-      <!-- Barra de navegación Móvil -->
+      <!-- Visulización de Navegación para moviles -->
       <a href="#" data-target="nav-mobile" class="sidenav-trigger">
         <i class="material-icons">
           menu
