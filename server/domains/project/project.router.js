@@ -16,8 +16,5 @@ router.get(['/projects', '/dashboard'], projectController.showDashboard);
 // GET /project/add
 router.get(['/add-form', '/add'], projectController.addForm);
 
-// GET /project/about
-router.get('/about', projectController.about);
-
 // Exporto este tramo de ruta
 export default router;
