@@ -1,14 +1,14 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import log from '../config/winston';
 
-// Creando la función de conexion
-export default async function connectWithRetry(mongoUrl) {
+// Creando la funcion de conexion
+export default async function connectionWithRetry(mongoUrl) {
   try {
     await mongoose.connect(mongoUrl);
-    log.info('✅ Conectado a MongoDB');
+    log.info('✅ Conectado a Mongodb');
   } catch (error) {
-    log.error(`💔 No se logro la conexion a la db💔: ${error.message}`);
-    log.error('Intentando la conexion en 20 segundos');
-    setTimeout(() => connectWithRetry(mongoUrl), 20000);
+    log.error(`❌ Fallo la conexion a Mongodb: ${error.message}`);
+    log.error('Intentando a la conexion en 20 seg');
+    setTimeout(() => connectionWithRetry(mongoUrl), 20000);
   }
 }
