@@ -11,7 +11,7 @@ const showDashboard = (req, res) => {
 // GET /project/add
 
 const addForm = (req, res) => {
-  res.send("🚧 UNDER CONSTRUCTION '/project/add-form' '/project/add'  🚧");
+  res.render('project/addView');
 };
 
 // Controlador Home
