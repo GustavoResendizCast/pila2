@@ -9,11 +9,11 @@ const router = new Router();
 
 // Enrutamos
 // GET /project/projects
-// GET /project/dashboard
+//  GET /project/dashboard
 router.get(['/projects', '/dashboard'], projectController.showDashboard);
 
 // GET /project/add-form
-// GET /project/add
+// GET /project/adda
 router.get(['/add-form', '/add'], projectController.addForm);
 
 // POST "/project/add"

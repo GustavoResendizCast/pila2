@@ -1,9 +1,9 @@
-// Importando moongose
+// Importando Mongoose
 import mongoose from 'mongoose';
-// Desestructurando la funcion Schema Special
+// Desestructurando la fn Schema
 const { Schema } = mongoose;
 
-// Construyendo un schema
+// Construir un Schema
 const ProjectSchema = new Schema({
   name: {
     type: String,
@@ -13,11 +13,12 @@ const ProjectSchema = new Schema({
     type: String,
     required: true,
   },
-  data: {
+  date: {
     type: Date,
     default: Date.now,
   },
 });
 
-// Compilando el Schema para generar un modelo
-export default mongoose.model('prject', ProjectSchema);
+// Compilando el esquema para
+// generar un modelo
+export default mongoose.model('project', ProjectSchema);

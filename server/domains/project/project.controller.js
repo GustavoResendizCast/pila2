@@ -9,12 +9,11 @@ const showDashboard = (req, res) => {
 
 // GET /project/add-form
 // GET /project/add
-
 const addForm = (req, res) => {
   res.render('project/addView');
 };
 
-// POST "/porject/add"
+// POST "/project/add"
 const addPost = (req, res) => {
   res.status(200).json(req.body);
 };
