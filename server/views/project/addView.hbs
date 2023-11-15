@@ -10,27 +10,23 @@
             </div>
             <form autocomplete="off" action="/projects/add" method="post">
             <div class="card-content">
-                <div class="input-field">
-                    <label for="" class="project-name">
-                        Nombre del Proyecto
-                    </label>
-                    <input 
-                    type="text"
-                    id="project-name"
-                    name="name"
-                    placeholder="Ingrese el nombre del proyecto"
-                    required
-                    class="validate">
+                <div class='input-field'>
+                    <label for='project-name'>Nombre de tu idea de proyecto</label>
+                    <input placeholder='El nombre del proyecto aqui 👇' id='project-name' name='name' type='text' class="validate" 
+                    value="{{ project.name }}" /> 
+                    {{#if errorModel.name }}
+                    <span style="color: crimson;">Error: {{ errorModel.name }}</span>
+                    {{/if}}
                 </div>
-                <div class="input-field">
-                    <label for="" class="project-description">
-                        Descripción del Proyecto
-                    </label>
+                <div class='input-field'>
+                    <label for='project-description'>Descripción del proyecto</label>
                     <textarea 
-                    name="description" 
-                    required
-                    id="project-description" 
-                    class="materialize-textarea"></textarea>
+                    id='project-description' 
+                    name='description' 
+                    class="materialize-textarea" required>{{project.description}}</textarea>
+                    {{#if errorModel.description }}
+                    <span style="color: crimson;">Error: {{ errorModel.description }}</span>
+                    {{/if}}
                 </div>
             </div>
             <div class="card-action">

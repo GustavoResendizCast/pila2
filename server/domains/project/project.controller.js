@@ -34,16 +34,16 @@ const addPost = (req, res) => {
       workingPrev[`${curr.path}`] = curr.message;
       return workingPrev;
     }, {});
-    res.status(422).json({ project, errorModel });
-  } else {
-    // En caso de que pase la validación
-    // Se desestructura la información
-    // de la peticion
-    const { validData: project } = req;
-    // Se contesta la información
-    // del proyecto al cliente
-    res.status(200).json(project);
+    return res.status(422).render('project/addView', { project, errorModel });
   }
+  // En caso de que pase la validación
+  // Se desestructura la información
+  // de la peticion
+  const { validData: project } = req;
+  // Se contesta la información
+  // del proyecto al cliente
+  log.info('Se entrega al cliente información del proyecto cargado');
+  return res.status(200).json(project);
 };
 
 // Controlador Home
