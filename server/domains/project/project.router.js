@@ -21,6 +21,12 @@ router.get(['/projects', '/showDashboard'], projectController.showDashboard);
 // GET /project/adda
 router.get(['/add-form', '/add'], projectController.addForm);
 
+// GET "/project/edit/:id"
+router.get('/edit/:id', projectController.edit);
+
+// PUT "/project/edit/:id"
+router.put('/edit/:id', projectController.editPut);
+
 // POST "/project/add"
 router.post(
   '/add',
@@ -29,6 +35,16 @@ router.post(
     getObject: projectValidator.getProject,
   }),
   projectController.addPost,
+);
+
+// PUT "/project/edit/:id"
+router.put(
+  '/edit/:id',
+  ValidateFactory({
+    schema: projectValidator.projectSchema,
+    getObject: projectValidator.getProject,
+  }),
+  projectController.editPut,
 );
 
 // Exporto este tramo de ruta
