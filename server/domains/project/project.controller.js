@@ -132,6 +132,19 @@ const editPut = async (req, res) => {
     return res.status(500).json(error);
   }
 };
+
+// DELETE "/project/:id"
+const deleteProject = async (req, res) => {
+  const { id } = req.params;
+  // Usando el modelo para borrar el proyecto
+  try {
+    const result = await ProjectModel.findByIdAndRemove(id);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
 // Controlador user
 export default {
   // Action Methods
@@ -140,4 +153,5 @@ export default {
   addPost,
   edit,
   editPut,
+  deleteProject,
 };
