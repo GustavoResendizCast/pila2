@@ -4,28 +4,20 @@ import { Router } from 'express';
 // Importando el controlador
 import projectController from './project.controller';
 
-// Importando factory de validacion
+// Importando factory de validación
 import ValidateFactory from '../../services/validateFactory';
-// Importando el validador de proyecto
+// Importando el validador de proyectos
 import projectValidator from './project.validator';
 
 // Creando una isntancia del enrutador
 const router = new Router();
 
 // Enrutamos
-// GET /project/projects
-//  GET /project/dashboard
-router.get(['/projects', '/showDashboard'], projectController.showDashboard);
+// GET "/project"
+router.get('/', projectController.showDashboard);
 
-// GET /project/add-form
-// GET /project/adda
-router.get(['/add-form', '/add'], projectController.addForm);
-
-// GET "/project/edit/:id"
-router.get('/edit/:id', projectController.edit);
-
-// PUT "/project/edit/:id"
-router.put('/edit/:id', projectController.editPut);
+// GET "/project/add"
+router.get('/add', projectController.add);
 
 // POST "/project/add"
 router.post(
@@ -36,6 +28,9 @@ router.post(
   }),
   projectController.addPost,
 );
+
+// GET "/project/edit/:id"
+router.get('/edit/:id', projectController.edit);
 
 // PUT "/project/edit/:id"
 router.put(

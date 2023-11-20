@@ -1,22 +1,24 @@
-// Actions methods
-
+// Importing winston logger
 import log from '../../config/winston';
 
+// Importando el modelo
 import ProjectModel from './project.model';
 
-// GET /project/projects
-//  GET /project/dashboard
+// Importando Httperrors
 
+// Actions methods
+// GET "/project"
+// GET "/project"
 const showDashboard = async (req, res) => {
   // Consultado todos los proyectos
   const projects = await ProjectModel.find({}).lean().exec();
   // Enviando los proyectos al cliente en JSON
+  log.info('Se entrega dashboard de proyectos');
   res.render('project/dashboardView', { projects });
 };
 
-// GET /project/add-form
-// GET /project/add
-const addForm = (req, res) => {
+// GET "/project/add"
+const add = (req, res) => {
   res.render('project/addView');
 };
 
@@ -29,7 +31,6 @@ const addPost = async (req, res) => {
   if (validationError) {
     log.info('Se entrega al cliente error de validación de add Project');
     // Se desestructuran los datos de validación
-    // y se renombran de  "value" a "project"
     const { value: project } = validationError;
     // Se extraen los campos que fallaron en la validación
     const errorModel = validationError.inner.reduce((prev, curr) => {
@@ -46,14 +47,15 @@ const addPost = async (req, res) => {
   // de la peticion
   const { validData: project } = req;
   try {
-    // Creando la instancia de un documento con los valores de 'project'
+    // Creando la instancia de un documento
+    // con los valores de 'project'
     const savedProject = await ProjectModel.create(project);
     // Se informa al cliente que se guardo el proyecto
     log.info(`Se carga proyecto ${savedProject}`);
     // Se registra en el log el redireccionamiento
     log.info('Se redirecciona el sistema a /project');
     // Se redirecciona el sistema a la ruta '/project'
-    return res.redirect('/projects/showDashboard');
+    return res.redirect('/project');
   } catch (error) {
     log.error(
       'ln 53 project.controller: Error al guardar proyecto en la base de datos',
@@ -64,7 +66,7 @@ const addPost = async (req, res) => {
 
 // GET "/project/edit/:id"
 const edit = async (req, res) => {
-  // Se extrae el id de los parámetros
+  // Extrayendo el id por medio de los parametros de url
   const { id } = req.params;
   // Buscando en la base de datos
   try {
@@ -78,6 +80,7 @@ const edit = async (req, res) => {
     }
     // Se manda a renderizar la vista de edición
     // res.render('project/editView', project);
+    // Se manda a renderizar la vista de edición
     log.info(`Proyecto encontrado con el id: ${id}`);
     return res.render('project/editView', { project });
   } catch (error) {
@@ -129,11 +132,11 @@ const editPut = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-
-// Controlador Home
+// Controlador user
 export default {
+  // Action Methods
   showDashboard,
-  addForm,
+  add,
   addPost,
   edit,
   editPut,

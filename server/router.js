@@ -8,7 +8,7 @@ const addRoutes = (app) => {
   app.use('/', homeRouter);
   app.use('/user', userRouter);
   app.use('/', userProject);
-  app.use('/projects', userProject);
+  app.use('/project', userProject);
   return app;
 };
 
