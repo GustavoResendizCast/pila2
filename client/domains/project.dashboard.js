@@ -8,6 +8,7 @@ export default async function deleteProject(id) {
     if (response.ok) {
       console.log('🔥🔥🔥🔥🔥');
       console.log(await response.json());
+      // Recargando la pagina
       window.location.reload();
     } else {
       throw new Error(

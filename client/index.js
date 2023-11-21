@@ -11,7 +11,7 @@ import deleteProject from './domains/project.dashboard';
 M.AutoInit();
 
 // Cargando script en caso de que la URL sea '/project'
-if (window.location.pathname === '/project/showDashboard') {
+if (window.location.pathname === '/project') {
   window.deleteProject = deleteProject;
 }
 
