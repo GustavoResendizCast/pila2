@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
+import uniqueValidator from 'mongoose-unique-validator';
+
 // 2. Desestructurando la fn Schema
 const { Schema } = mongoose;
 // 3. Creando el esquema
@@ -10,14 +12,14 @@ const UserSchema = new Schema(
   {
     firstName: { type: String, required: true },
     lastname: { type: String, required: true },
-    email: {
+    mail: {
       type: String,
       unique: true,
       required: [true, 'Es necesario ingresar email'],
       validate: {
-        validator(email) {
+        validator(mail) {
           // eslint-disable-next-line no-useless-escape
-          return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email);
+          return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(mail);
         },
         message: `{VALUE} noes un email valido`,
       },
@@ -51,6 +53,9 @@ const UserSchema = new Schema(
   { timestamps: true },
 );
 
+// Adding Plugins to Schema
+UserSchema.plugin(uniqueValidator);
+
 // Asignando metodos de instancia
 UserSchema.methods = {
   // Metodo para encriptar el password
@@ -60,6 +65,19 @@ UserSchema.methods = {
   // Genera un token de 64 caracteres aleatorios
   generateConfirmationToken() {
     return crypto.randomBytes(64).toString('hex');
+  },
+  // Funcion de tranformacion a Json personalizada
+  toJSON() {
+    return {
+      id: this._id,
+      firstName: this.firstName,
+      lastname: this.lastname,
+      mail: this.mail,
+      emailConfirmationToken: this.emailConfirmationToken,
+      emailConfirmationAt: this.emailConfirmationAt,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    };
   },
 };
 
