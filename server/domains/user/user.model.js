@@ -14,10 +14,15 @@ const { Schema } = mongoose;
 // 3. Creando el esquema
 const UserSchema = new Schema(
   {
-    firstName: { type: String, required: true },
-    lastname: { type: String, required: true },
+    firstName: { type: String, required: true, lowercase: true },
+    lastname: { type: String, required: true, lowercase: true },
+    image: {
+      type: String,
+      default: 'https://img.icons8.com/fluent/48/000000/user-male-circle.png',
+    },
     mail: {
       type: String,
+      lowercase: true,
       unique: true,
       required: [true, 'Es necesario ingresar email'],
       validate: {
@@ -51,7 +56,7 @@ const UserSchema = new Schema(
         message: 'Es necesario ingresar un password fuerte',
       },
     },
-    // Agrega una propiedad que identifica el rol del usuario como user o admin
+    // agrega una propiedad que identifica el rol del usuario como user o admin
     role: {
       type: String,
       enum: ['user', 'admin'],
@@ -91,6 +96,21 @@ UserSchema.methods = {
       updatedAt: this.updatedAt,
     };
   },
+  // Metodo para activar el usuario
+  async activate() {
+    await this.updateOne({
+      emailConfirmationToken: null,
+      // updatedAt: new Date(),
+      emailConfirmationAt: new Date(),
+    }).exec();
+  },
+};
+
+// Statics Methods
+UserSchema.statics.findByToken = async function findByToken(token) {
+  // This hace referencia al modelo es decir
+  // a todo el conjunto de documentos
+  return this.findOne({ emailConfirmationToken: token });
 };
 
 // Hooks
@@ -133,11 +153,11 @@ UserSchema.post('save', async function sendConfirmationMail() {
         lastname: this.lastname,
         mail: this.mail,
         token: this.emailConfirmationToken,
+        host: configKeys.APP_URL,
       },
-      `
-      Estimado ${this.firstName} ${this.lastname}  
-      hemos enviado un correo de confirmación a ${this.mail}  
-      favor de hacer clic en enlace de dicho correo`,
+      `Estimado ${this.firstName} ${this.lastname} 
+      para validar tu cuenta debes hacer clic en el siguiente
+      enlace: ${configKeys.APP_URL}/user/confirm/${this.token}`,
     );
 
     if (!info) return log.info('😭 No se pudo enviar el correo');
