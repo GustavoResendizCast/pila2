@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <title>{{title}}</title>
-		<link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <title>{{title}}</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel='stylesheet' href='/styles/app.css' />
     <script src="/bundle.js" defer></script>
 
   </head>
-  <body>{{#if backgroundColor}} class="{{backgroundColor}}"{{/if}}
+  <body{{#if backgroundColor}} class="{{backgroundColor}}"{{/if}}>
     {{!-- Llamando a la vista parcial de la barra de navegacion --}}
-  {{> _navbar }}
-  
+    {{> _navbar }}
+    
     <div class="container">
-      {{{body}}}
+    {{{body}}}
     </div>
 
-    {{> _flashMessage }}
+    {{> _flashMessages }}
   </body>
 </html>
