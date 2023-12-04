@@ -75,7 +75,7 @@ UserSchema.methods = {
   },
   // Genera un token de 64 caracteres aleatorios
   generateConfirmationToken() {
-    return crypto.randomBytes(64).toString('hex');
+    return crypto.randomBytes(32).toString('hex');
   },
   // Funcion de tranformacion a Json personalizada
   toJSON() {
