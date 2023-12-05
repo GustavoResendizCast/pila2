@@ -21,7 +21,7 @@ const router = new Router();
 // GET '/user/login'
 router.get('/login', userController.login);
 
-// GET '/user/logout'
+// GET user/logout
 router.get('/logout', userController.logout);
 
 // GET '/user/register'
