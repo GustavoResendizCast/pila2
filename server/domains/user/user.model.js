@@ -104,6 +104,10 @@ UserSchema.methods = {
       emailConfirmationAt: new Date(),
     }).exec();
   },
+  // Verifica el password
+  authenticateUser(password) {
+    return bcrypt.compareSync(password, this.password);
+  },
 };
 
 // Statics Methods

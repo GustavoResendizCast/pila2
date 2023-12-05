@@ -2,6 +2,8 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+// Importando Passport
+import passport from 'passport';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 // Enable post and delete verbs
@@ -92,6 +94,11 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 // Habilitando manejo de sesiones y mensajes flash
 configSession(app);
+// Agrendo middleware de passport
+app.use(passport.initialize());
+// Agregando el middleware de passport
+// para el manejo de sesiones
+app.use(passport.session());
 // Crea un server de archivos estaticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
